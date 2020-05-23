@@ -48,6 +48,19 @@ export class ComponentsComponent implements OnInit, OnDestroy {
         navbar.classList.add('navbar-transparent');
         var body = document.getElementsByTagName('body')[0];
         body.classList.add('index-page');
+
+        var x = 0;
+        var images = ['profile_pic1.jpg', 'profile_pic2.jpg', 'profile_pic3.jpg', 'profile_pic4.jpg', 'profile_pic5.png', 'profile_pic6.png', 'profile_pic7.gif']
+
+        setInterval(function () {
+            if (x > images.length-1) {
+                x = 0
+            }
+            let img = document.getElementById('profile_pic');
+            img.setAttribute('src', "assets/img/pam/" + images[x]);
+            x++
+        }, 500);
+
     }
     ngOnDestroy(){
         var navbar = document.getElementsByTagName('nav')[0];
@@ -55,4 +68,5 @@ export class ComponentsComponent implements OnInit, OnDestroy {
         var body = document.getElementsByTagName('body')[0];
         body.classList.remove('index-page');
     }
+
 }
