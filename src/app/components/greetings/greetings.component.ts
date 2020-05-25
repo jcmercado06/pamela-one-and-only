@@ -58,17 +58,26 @@ export class GreetingsComponent implements OnInit, OnDestroy{
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
-      autoplay: {
+      /* autoplay: {
         delay: 5000,
         disableOnInteraction: false
-      },
+      }, */
     })
 
   }
 
 
-  getPhotoID(url){
-    return url.slice(33, url.length)
+  getPhotoID(photo){
+    let id = photo.slice(33, photo.length)
+    let styles
+    let url = 'http://drive.google.com/uc?export=view&id='+id
+    let background = `url(${url})`
+    styles = {
+      "background-image" : background,
+      "background-repeat" : "no-repeat",
+      "background- position": "center"
+    }
+    return styles
   }
 
 

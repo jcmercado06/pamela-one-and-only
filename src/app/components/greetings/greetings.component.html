@@ -1,10 +1,12 @@
+<!-- <img
+  src="https://drive.google.com/uc?export=view&id={{ getPhotoID('https://drive.google.com/open?id=1Nt9vn0tPdSl30oo_zCJRx_vRNRCIKBS2') }}"> -->
 <!-- Swiper -->
 <div class="swiper-container">
   <div class="parallax-bg"></div>
   <div class="swiper-wrapper">
     <div class='swiper-slide midnight'>
       <div class="swiper-slide"
-        style="background: url('https://swiperjs.com/demos/images/nature-1.jpg') no-repeat center;"
+      [ngStyle]="getPhotoID('https://drive.google.com/open?id=1Nt9vn0tPdSl30oo_zCJRx_vRNRCIKBS2')"
         data-swiper-parallax="-23%">
         <div class="title" data-swiper-parallax="-300">Slide 1 <span class='time'>5/14/2020 17:15:30</span>
         </div>
@@ -45,7 +47,9 @@
       </div>
     </div>
     <div class="swiper-slide piglet">
-      <div class="swiper-slide" style="background: url('') no-repeat center" data-swiper-parallax="-23%">
+      <div class="swiper-slide"
+        style="background: url('http://drive.google.com/uc?export=view&id=1Nt9vn0tPdSl30oo_zCJRx_vRNRCIKBS2') no-repeat center"
+        data-swiper-parallax="-23%">
         <div class="title" data-swiper-parallax="-300">Slide 3</div>
         <div class="text" data-swiper-parallax="-100">
           <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum mattis velit, sit
@@ -77,9 +81,9 @@
 
   <div class="main">
     <br><br><br>
+    <img src="https://drive.google.com/uc?export=view&id=getID('https://drive.google.com/open?id=1Nt9vn0tPdSl30oo_zCJRx_vRNRCIKBS2')">
     
 
-    
     
     
     <div class="section section-download" id="#download-section" data-background-color="black">
