@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, Renderer2, ElementRef, OnDestroy, NgZone, Af
 import { map } from 'rxjs/operators';
 import { GreetingsService } from '../../services/greetings.service'
 import { Observable} from 'rxjs'
-
+import { take } from 'rxjs/operators';
 declare var $: any;
 declare var Swiper: any;
 @Component({
@@ -22,14 +22,35 @@ export class GreetingsComponent implements OnInit, OnDestroy{
   ) { }
 
   
-  ngOnInit() {
+  async ngOnInit(): Promise<any> {
     let navbar = document.getElementsByTagName('app-navbar')[0].children[0];
 
     navbar.classList.remove('navbar-transparent');
     console.log('Hola Mundo')
-    this.greetingService.getAnswers().subscribe(data => this.greetings = data)
-
+    /* this.greetingService.getAnswers().subscribe(data => this.greetings = data) */
+    this.greetings = await this.greetingService.getAnswers().pipe(take(1)).toPromise();
+    /* this.greetings = [
+      {
+        Message: "Test Message",
+        Name: "JC",
+        Timestamp: "5/14/2020 17:15:30",
+        background: "",
+        photo: "https://drive.google.com/open?id=13fBQtcUB1V1sIG1dxKd5ue9z--vif9cz",
+        photo_id: "13fBQtcUB1V1sIG1dxKd5ue9z--vif9cz",
+        photo_url: "https://drive.google.com/open?id",
+      },
+      {
+        Message: "Test Message 1234123",
+        Name: "JC123",
+        Timestamp: "5/14/2020 17:15:30",
+        background: "asuze",
+        photo: "https://drive.google.com/open?id=13fBQtcUB1V1sIG1dxKd5ue9z--vif9cz",
+        photo_id: "13fBQtcUB1V1sIG1dxKd5ue9z--vif9cz",
+        photo_url: "https://drive.google.com/open?id",
+      }
+    ] */
     console.log("data",this.greetings);
+    
     
     
     
@@ -37,43 +58,50 @@ export class GreetingsComponent implements OnInit, OnDestroy{
 
   ngOnDestroy() {
     let navbar = document.getElementsByTagName('app-navbar')[0].children[0];
-
+    console.log("hello");
+    
   }
 
   ngAfterViewInit() {
-    var swiper = new Swiper($('.swiper-container'), {
-      scrollbar: {
-        el: '.swiper-scrollbar',
-        hide: false,
-        snapOnRelease: false
-      },
-      speed: 600,
-      parallax: true,
-      /* pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      }, */
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      autoplay: {
-        delay: 4400,
-        disableOnInteraction: false
-      },
-      cubeEffect: {
-        slideShadows: true,
-      },
-      
-    })
 
-    swiper.on('slideChange', function () {
-      let scroll_drag = document.querySelector(".swiper-scrollbar-drag")
-      scroll_drag["style"].width = "1px";
-      scroll_drag.classList.remove("run-animation")
-      void scroll_drag["offsetWidth"];
+    setTimeout(() => {
+      let scroll_drag = document.querySelector(".swiper-scrollbar-drag");
       scroll_drag.classList.add("run-animation")
-    });
+       var swiper = new Swiper($('.swiper-container'), {
+        scrollbar: {
+          el: '.swiper-scrollbar',
+          hide: false,
+          snapOnRelease: false
+        },
+        speed: 600,
+        parallax: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        /* autoplay: {
+          delay: 4400,
+          disableOnInteraction: false
+        }, */
+        cubeEffect: {
+          slideShadows: true,
+        },
+
+      })
+
+      swiper.on('slideChange', function () {
+        console.log("slide");
+
+        
+        scroll_drag["style"].width = "1px";
+        scroll_drag.classList.remove("run-animation")
+        void scroll_drag["offsetWidth"];
+        scroll_drag.classList.add("run-animation")
+      });
+
+    }, 1000);
+  
+    
   }
 
 
@@ -89,11 +117,14 @@ export class GreetingsComponent implements OnInit, OnDestroy{
   }
 
   testAPI(){
-    console.log(this.greetingService.getAnswers());
+    /* console.log(this.greetingService.getAnswers()); */
     console.log(this.greetings)
     
   }
 
+  async getAnswers(){
+    return await this.greetingService.getAnswers().subscribe(data => this.greetings = data)
+  }
 
 
  

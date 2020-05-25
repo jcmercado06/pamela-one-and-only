@@ -97,7 +97,7 @@ body {
 }
 .swiper-scrollbar-drag {
     height: 100%;
-    width: 0px;
+    width: 100%;
     position: relative;
     background: rgb(255, 255, 255);
     border-radius: 10px;
@@ -106,27 +106,15 @@ body {
     
 }
 .run-animation{
-  animation: animate 5s linear infinite;
+  animation: animate 7s linear infinite;
 }
 
 @keyframes animate{
   0%{
     width: 0%;
   }
-  25% {
-    width: 6.25%;
-  }
-
-  50% {
-    width: 12.5%;
-  }
-
-  75% {
-    width: 18.75%;
-  }
-
   100% {
-    width: 25%;
+    width: 33%;
   }
 }
 

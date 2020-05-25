@@ -1,14 +1,18 @@
-<br>
-<br>
-<br>
-<button (click)="testAPI()">Test API</button>
 <div class="swiper-container">
   <div class="parallax-bg"></div>
   <div class="swiper-wrapper">
     <ng-container *ngFor="let item of greetings">
-
+      <div class='swiper-slide {{(item.background) ? item.background.toLowerCase() : "default" }}'>
+        <div class="swiper-slide" [ngStyle]="getPhotoID(item.photo)" data-swiper-parallax="-23%">
+          <div class="title" data-swiper-parallax="-300">{{item.Name}} <span class='time'>{{item.Timestamp}}</span>
+          </div>
+          <div class="text" data-swiper-parallax="-100">
+            <span>{{ item.Message}}</span>
+          </div>
+        </div>
+      </div>
     </ng-container>
-    <div class='swiper-slide midnight'>
+    <!-- <div class='swiper-slide azure'>
       <div class="swiper-slide"
       [ngStyle]="getPhotoID('https://drive.google.com/open?id=1Nt9vn0tPdSl30oo_zCJRx_vRNRCIKBS2')"
         data-swiper-parallax="-23%">
@@ -32,69 +36,14 @@
             rutrum.</span>
         </div>
       </div>
-    </div>
-    <div class='swiper-slide azure'>
-      <div class="swiper-slide"
-      [ngStyle]="getPhotoID('https://drive.google.com/open?id=1Nt9vn0tPdSl30oo_zCJRx_vRNRCIKBS2')"
-        data-swiper-parallax="-23%">
-        <div class="title" data-swiper-parallax="-300">Slide 1 <span class='time'>5/14/2020 17:15:30</span>
-        </div>
-        <div class="text" data-swiper-parallax="-100">
-          <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum mattis velit, sit
-            amet faucibus
-            felis iaculis nec. Nulla laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
-            Integer laoreet
-            magna nec elit suscipit, ac laoreet nibh euismod. Aliquam hendrerit lorem at elit facilisis
-            rutrum. Ut at
-            ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec, tincidunt ut libero. Aenean
-            feugiat non eros
-            quis feugiat.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum mattis velit, sit amet
-            faucibus
-            felis iaculis nec. Nulla laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
-            Integer laoreet
-            magna nec elit suscipit, ac laoreet nibh euismod. Aliquam hendrerit lorem at elit facilisis
-            rutrum.</span>
-        </div>
-      </div>
-    </div>
-    <div class='swiper-slide azure'>
-      <div class="swiper-slide"
-        [ngStyle]="getPhotoID('https://drive.google.com/open?id=13fBQtcUB1V1sIG1dxKd5ue9z--vif9cz')"
-        data-swiper-parallax="-23%">
-        <div class="title" data-swiper-parallax="-300">Slide 1 <span class='time'>5/14/2020 17:15:30</span>
-        </div>
-        <div class="text" data-swiper-parallax="-100">
-          <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum mattis velit, sit
-            amet faucibus
-            felis iaculis nec. Nulla laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
-            Integer laoreet
-            magna nec elit suscipit, ac laoreet nibh euismod. Aliquam hendrerit lorem at elit facilisis
-            rutrum. Ut at
-            ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec, tincidunt ut libero. Aenean
-            feugiat non eros
-            quis feugiat..</span>
-        </div>
-      </div>
-    </div>
-    
-    <div class="swiper-slide piglet">
-      <div class="swiper-slide"
-        style="background: url('http://drive.google.com/uc?export=view&id=1Nt9vn0tPdSl30oo_zCJRx_vRNRCIKBS2') no-repeat center"
-        data-swiper-parallax="-23%">
-        <div class="title" data-swiper-parallax="-300">Slide 3</div>
-        <div class="text" data-swiper-parallax="-100">
-          <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum mattis velit, sit
-            amet faucibus
-            </span>
-        </div>
-      </div>
-    </div>
+    </div> -->
+
+
   </div>
 
   <!-- Add Scrollbar -->
   <div class="swiper-scrollbar">
-    <div class="swiper-scrollbar-drag run-animation"></div>
+    <div class="swiper-scrollbar-drag "></div>
   </div>
   <!-- Add Pagination -->
   <!-- <div class="swiper-pagination swiper-pagination-white"></div> -->
