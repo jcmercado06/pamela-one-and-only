@@ -73,9 +73,7 @@ export class GreetingsComponent implements OnInit, OnDestroy{
     let url = 'http://drive.google.com/uc?export=view&id='+id
     let background = `url(${url})`
     styles = {
-      "background-image" : background,
-      "background-repeat" : "no-repeat",
-      "background- position": "center"
+      "background" : background + "no-repeat center",
     }
     return styles
   }
