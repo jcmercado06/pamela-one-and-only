@@ -26,11 +26,10 @@ export class GreetingsComponent implements OnInit, OnDestroy{
     let navbar = document.getElementsByTagName('app-navbar')[0].children[0];
 
     navbar.classList.remove('navbar-transparent');
-
+    console.log('Hola Mundo')
     this.greetingService.getAnswers().subscribe(data => this.greetings = data)
 
     console.log("data",this.greetings);
-    
     
     
     
@@ -58,12 +57,23 @@ export class GreetingsComponent implements OnInit, OnDestroy{
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
-      /* autoplay: {
-        delay: 5000,
+      autoplay: {
+        delay: 4400,
         disableOnInteraction: false
-      }, */
+      },
+      cubeEffect: {
+        slideShadows: true,
+      },
+      
     })
 
+    swiper.on('slideChange', function () {
+      let scroll_drag = document.querySelector(".swiper-scrollbar-drag")
+      scroll_drag["style"].width = "1px";
+      scroll_drag.classList.remove("run-animation")
+      void scroll_drag["offsetWidth"];
+      scroll_drag.classList.add("run-animation")
+    });
   }
 
 
@@ -76,6 +86,12 @@ export class GreetingsComponent implements OnInit, OnDestroy{
       "background" : background + "no-repeat center",
     }
     return styles
+  }
+
+  testAPI(){
+    console.log(this.greetingService.getAnswers());
+    console.log(this.greetings)
+    
   }
 
 
