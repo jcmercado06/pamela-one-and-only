@@ -11,7 +11,6 @@ declare var Swiper: any;
   styleUrls: ['./greetings.component.css']
 })
 export class GreetingsComponent implements OnInit, OnDestroy{
-  api_key = 'AIzaSyBkRGjjHlTM2vexmL6NvmMlKKEseQx0wew'
   sheet_id = '1OX1rW7PlL1XQxdlgjXQf3FACXPev1WELxeySzXqv-J4'
   sheet = 'Form Responses 1'
   greetings;
@@ -28,10 +27,10 @@ export class GreetingsComponent implements OnInit, OnDestroy{
     navbar.classList.remove('navbar-transparent');
     console.log('Hola Mundo')
     /* this.greetingService.getAnswers().subscribe(data => this.greetings = data) */
-    this.greetings = await this.greetingService.getAnswers().pipe(take(1)).toPromise();
-    /* this.greetings = [
+    /* this.greetings = await this.greetingService.getAnswers().pipe(take(1)).toPromise(); */
+    this.greetings = [
       {
-        Message: "Test Message",
+        Message: "Test Messagese234",
         Name: "JC",
         Timestamp: "5/14/2020 17:15:30",
         background: "",
@@ -43,12 +42,12 @@ export class GreetingsComponent implements OnInit, OnDestroy{
         Message: "Test Message 1234123",
         Name: "JC123",
         Timestamp: "5/14/2020 17:15:30",
-        background: "asuze",
+        background: "azure",
         photo: "https://drive.google.com/open?id=13fBQtcUB1V1sIG1dxKd5ue9z--vif9cz",
         photo_id: "13fBQtcUB1V1sIG1dxKd5ue9z--vif9cz",
         photo_url: "https://drive.google.com/open?id",
       }
-    ] */
+    ]
     console.log("data",this.greetings);
     
     
@@ -79,10 +78,10 @@ export class GreetingsComponent implements OnInit, OnDestroy{
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
-        /* autoplay: {
+        autoplay: {
           delay: 4400,
           disableOnInteraction: false
-        }, */
+        },
         cubeEffect: {
           slideShadows: true,
         },
@@ -90,16 +89,13 @@ export class GreetingsComponent implements OnInit, OnDestroy{
       })
 
       swiper.on('slideChange', function () {
-        console.log("slide");
-
-        
         scroll_drag["style"].width = "1px";
         scroll_drag.classList.remove("run-animation")
         void scroll_drag["offsetWidth"];
         scroll_drag.classList.add("run-animation")
       });
 
-    }, 1000);
+    }, 3000);
   
     
   }
