@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" [hidden]="!pop" >
   <div class="page-header clear-filter" filter-color="orange">
     <div class="page-header-image rellax-header" data-rellax-speed="-7"
       style="background-image: url('assets/img/greeting-header1.gif');">
@@ -27,13 +27,12 @@
 
 
 
-<br>
-<br>
-<br>
-<br>
-<div class="swiper-container">
+
+
+<div class="swiper-container" [hidden]="pop" (ondragstart)="myFunction(event)" draggable="true">
   <div class="parallax-bg"></div>
   <div class="swiper-wrapper">
+    <button style="position:absolute;float:right">X</button>
     <ng-container *ngFor="let item of greetings">
       <div class='swiper-slide {{(item.background) ? item.background.toLowerCase() : "default" }}'>
         <div class="swiper-slide" [ngStyle]="getPhotoID(item.photo)" data-swiper-parallax="-23%">
@@ -45,7 +44,7 @@
         </div>
       </div>
     </ng-container>
-    <div class='swiper-slide azure'>
+    <div class='swiper-slide sunset'>
       <div class="swiper-slide"
       [ngStyle]="getPhotoID('https://drive.google.com/open?id=1Nt9vn0tPdSl30oo_zCJRx_vRNRCIKBS2')"
         data-swiper-parallax="-23%">

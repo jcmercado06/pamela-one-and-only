@@ -4,9 +4,6 @@ import { GreetingsService } from '../../services/greetings.service'
 import { Observable} from 'rxjs'
 import { take } from 'rxjs/operators';
 
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
-import * as Rellax from 'rellax';
 
 
 declare var $: any;
@@ -23,6 +20,7 @@ export class GreetingsComponent implements OnInit, OnDestroy{
   sheet_id = '1OX1rW7PlL1XQxdlgjXQf3FACXPev1WELxeySzXqv-J4'
   sheet = 'Form Responses 1'
   greetings;
+  pop=true
 
   constructor(
     private element: ElementRef,
@@ -84,6 +82,7 @@ export class GreetingsComponent implements OnInit, OnDestroy{
           snapOnRelease: false
         },
         speed: 600,
+        grabCursor: true,
         parallax: true,
         navigation: {
           nextEl: '.swiper-button-next',
@@ -143,13 +142,15 @@ export class GreetingsComponent implements OnInit, OnDestroy{
 
   showGreetingsDialog(){
     console.log("click");
-    
+    let navbar = document.getElementsByTagName('app-navbar')[0].children[0];
+    navbar.setAttribute('hidden','true')
+    this.pop = false
+
   }
 
-
- 
-
-
-
+  myFunction(e){
+    console.log(e);
+    
+  }
 
 }
