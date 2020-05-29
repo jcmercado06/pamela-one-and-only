@@ -221,3 +221,99 @@ body {
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
+
+
+.story img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%, -50.5%);
+}
+
+.story svg {
+  max-width: 500px;
+  max-height: 500px;
+  width: 500px;
+  height: 500px;
+  fill:none;
+  stroke-width: 5px;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  animation: loading 4500ms ease-in-out infinite alternate;
+}
+
+.story svg:hover {
+  cursor: pointer;
+}
+
+.story svg circle {
+  cx:250;
+  cy:250;
+  r:230;
+}
+
+@keyframes loading {
+  100%{
+    stroke-dasharray: 10;
+    transform:rotate(250deg);
+  }
+  
+}
+
+
+@media screen and (min-width: 991px) {
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+ .story img {
+   transform: translate(-50%, -50.5%);
+ }
+
+ .story svg {
+   width: 400px;
+   height: 400px;
+ }
+
+ .story svg circle {
+   cx: 200;
+   cy: 200;
+   r: 190;
+ }
+
+}
+
+@media (min-width: 361px) and (max-width: 767px) {
+  .story img {
+    transform: translate(-50%, -51.5%);
+  }
+.story svg {
+  width: 240px;
+  height: 240px;
+}
+.story svg circle {
+  cx: 120;
+  cy: 120;
+  r: 110;
+}
+
+}
+
+@media (max-width: 360px) {
+  .story img {
+    transform: translate(-50%, -51.5%);
+  }
+
+  .story svg {
+    width: 240px;
+    height: 240px;
+  }
+
+  .story svg circle {
+    cx: 120;
+    cy: 120;
+    r: 100;
+  }
+
+}

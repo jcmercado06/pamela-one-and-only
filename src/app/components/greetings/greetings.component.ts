@@ -8,7 +8,10 @@ declare var Swiper: any;
 @Component({
   selector: 'app-greetings',
   templateUrl: './greetings.component.html',
-  styleUrls: ['./greetings.component.css']
+  styleUrls: ['./greetings.component.css'],
+  host: {
+    '(window:resize)': 'onResize($event)'
+  }
 })
 export class GreetingsComponent implements OnInit, OnDestroy{
   sheet_id = '1OX1rW7PlL1XQxdlgjXQf3FACXPev1WELxeySzXqv-J4'
@@ -49,6 +52,13 @@ export class GreetingsComponent implements OnInit, OnDestroy{
       }
     ]
     console.log("data",this.greetings);
+
+    
+    $(window).height();
+    $(window).width();
+
+
+    console.log($(window).height(), $(window).width());
     
     
     
@@ -120,6 +130,19 @@ export class GreetingsComponent implements OnInit, OnDestroy{
 
   async getAnswers(){
     return await this.greetingService.getAnswers().subscribe(data => this.greetings = data)
+  }
+
+  onResize(event) {
+    console.log(event.target);
+    
+    event.target.innerWidth; // window width
+    console.log(event.target.innerWidth);
+    
+  }
+
+  showGreetingsDialog(){
+    console.log("click");
+    
   }
 
 
