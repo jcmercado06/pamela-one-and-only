@@ -3,6 +3,12 @@ import { map } from 'rxjs/operators';
 import { GreetingsService } from '../../services/greetings.service'
 import { Observable} from 'rxjs'
 import { take } from 'rxjs/operators';
+
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
+import * as Rellax from 'rellax';
+
+
 declare var $: any;
 declare var Swiper: any;
 @Component({
@@ -52,14 +58,7 @@ export class GreetingsComponent implements OnInit, OnDestroy{
       }
     ]
     console.log("data",this.greetings);
-
-    
-    $(window).height();
-    $(window).width();
-
-
-    console.log($(window).height(), $(window).width());
-    
+    document.getElementsByTagName('app-navbar')[0].children[0].classList.add('navbar-transparent')
     
     
     
@@ -67,6 +66,8 @@ export class GreetingsComponent implements OnInit, OnDestroy{
 
   ngOnDestroy() {
     let navbar = document.getElementsByTagName('app-navbar')[0].children[0];
+   
+    
     console.log("hello");
     
   }
