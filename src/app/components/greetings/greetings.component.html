@@ -1,4 +1,4 @@
-<div class="wrapper" [hidden]="!pop" >
+<div class="wrapper" [hidden]="!pop">
   <div class="page-header clear-filter" filter-color="orange">
     <div class="page-header-image rellax-header" data-rellax-speed="-7"
       style="background-image: url('assets/img/greeting-header1.gif');">
@@ -6,16 +6,18 @@
     </div>
     <div class="container">
       <div class="content-center brand head">
-        <div class="story">
+        <div class="story"
+        [@cardAnimator]="animationState"
+        (@cardAnimator.done)="resetAnimationState()">
           <img  class="n-logo" src="../../../assets/img/pam/greeting_pic.jpg" class='rounded-circle' style="width: 50%;" alt="">
-          <svg viewbox="0 0 0 0" (click)="showGreetingsDialog()">
+          <svg viewbox="0 0 0 0" (click)="startAnimation('bounceOut')">
             <defs>
               <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
                 <stop offset="0%" stop-color="#FF5F6D" />
                 <stop offset="100%" stop-color="#FFC371" />
               </linearGradient>
             </defs>
-            <circle  stroke="url(#gradient)" />
+            <circle stroke="url(#gradient)" />
           </svg>
         </div>
           
@@ -25,13 +27,9 @@
 </div>
 
 
-
-
-
-
-<div class="swiper-container" [hidden]="pop" (ondragstart)="myFunction(event)" draggable="true">
+<div class="swiper-container" [hidden]="pop" >
   <div class="parallax-bg"></div>
-  <div class="swiper-wrapper">
+  <div class="swiper-wrapper" (swipedown)="hideGreetingDialog()">
     <button style="position:absolute;float:right">X</button>
     <ng-container *ngFor="let item of greetings">
       <div class='swiper-slide {{(item.background) ? item.background.toLowerCase() : "default" }}'>

@@ -4,7 +4,9 @@ import { GreetingsService } from '../../services/greetings.service'
 import { Observable} from 'rxjs'
 import { take } from 'rxjs/operators';
 
-
+import { trigger, keyframes, animate, transition } from '@angular/animations'
+import * as kf from './keyframes';
+import * as Hammer from 'hammerjs';
 
 declare var $: any;
 declare var Swiper: any;
@@ -12,11 +14,14 @@ declare var Swiper: any;
   selector: 'app-greetings',
   templateUrl: './greetings.component.html',
   styleUrls: ['./greetings.component.css'],
-  host: {
-    '(window:resize)': 'onResize($event)'
-  }
+  animations: [
+    trigger('cardAnimator',[
+      transition('* => bounceOut', animate(1000, keyframes(kf.bounceOut)))
+    ])
+  ]
 })
 export class GreetingsComponent implements OnInit, OnDestroy{
+  animationState:string;
   sheet_id = '1OX1rW7PlL1XQxdlgjXQf3FACXPev1WELxeySzXqv-J4'
   sheet = 'Form Responses 1'
   greetings;
@@ -141,16 +146,36 @@ export class GreetingsComponent implements OnInit, OnDestroy{
   }
 
   showGreetingsDialog(){
-    console.log("click");
     let navbar = document.getElementsByTagName('app-navbar')[0].children[0];
     navbar.setAttribute('hidden','true')
     this.pop = false
 
   }
 
+  hideGreetingDialog(){
+    
+  }
+
   myFunction(e){
     console.log(e);
     
+  }
+
+  startAnimation(state){
+    console.log(state);
+    if (!this.animationState) {
+      this.animationState = state
+      
+    }
+    setTimeout(() => {
+      this.showGreetingsDialog()
+    }, 500);
+  
+    
+  }
+
+  resetAnimationState(){
+    this.animationState = ''
   }
 
 }
