@@ -25,11 +25,17 @@
     </div>
   </div>
 </div>
+  <img [hidden]="pop" src="https://img.icons8.com/ios/48/000000/multiply.png"
+  style="position: absolute;
+    cursor: pointer;
+    top: 0px;
+    right: 0px;
+    z-index: 99999;"
+  (click)="hideGreetingDialog($event)"/>
 
-
-<div class="swiper-container" [hidden]="pop" >
+<div class="swiper-container" [hidden]="pop" (swipedown)="swipeDown($event)">
   <div class="parallax-bg"></div>
-  <div class="swiper-wrapper" (swipedown)="hideGreetingDialog()">
+  <div class="swiper-wrapper" (swipedown)="hideGreetingDialog($event)">
     <button style="position:absolute;float:right">X</button>
     <ng-container *ngFor="let item of greetings">
       <div class='swiper-slide {{(item.background) ? item.background.toLowerCase() : "default" }}'>
