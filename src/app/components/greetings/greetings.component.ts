@@ -26,6 +26,7 @@ export class GreetingsComponent implements OnInit, OnDestroy{
   sheet = 'Form Responses 1'
   greetings;
   pop=true
+  startY;
 
   constructor(
     private element: ElementRef,
@@ -109,12 +110,29 @@ export class GreetingsComponent implements OnInit, OnDestroy{
         void scroll_drag["offsetWidth"];
         scroll_drag.classList.add("run-animation")
       });
+      swiper.on('touchStart', function(e){
+        //console.log(e);
+        /* this.startY = e.targetTouches[0].pageY */
+        
+      })
+      swiper.on('touchEnd', function (e) {
+        /* console.log(this.startY);
+        console.log(e); */
+        
+      })
+      swiper.on('reachEnd', function(e){
+        console.log("end");
+        
+      })
 
     }, 3000);
   
     
   }
-
+  swipeDown(e){
+    console.log("SWIPEDOWN");
+    
+  }
 
   getPhotoID(photo){
     let id = photo.slice(33, photo.length)
@@ -152,8 +170,12 @@ export class GreetingsComponent implements OnInit, OnDestroy{
 
   }
 
-  hideGreetingDialog(){
+  hideGreetingDialog(e){
+    let navbar = document.getElementsByTagName('app-navbar')[0].children[0];
+    navbar.removeAttribute("hidden")
+    console.log(navbar);
     
+    this.pop = true
   }
 
   myFunction(e){
@@ -179,3 +201,5 @@ export class GreetingsComponent implements OnInit, OnDestroy{
   }
 
 }
+
+

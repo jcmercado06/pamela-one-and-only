@@ -11,6 +11,17 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { HttpClientModule } from "@angular/common/http";
 import { GreetingsService } from './services/greetings.service'
 
+import * as Hammer from 'hammerjs';
+import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+
+export class CustomHammerConfig extends HammerGestureConfig{
+    overrides = <any> {
+        'swipe':{
+            direction: Hammer.DIRECTION_ALL
+        }
+    }
+}
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -25,7 +36,10 @@ import { GreetingsService } from './services/greetings.service'
         ComponentsModule,
         HttpClientModule
     ],
-    providers: [GreetingsService],
+    providers: [
+        GreetingsService,
+        { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig}
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
