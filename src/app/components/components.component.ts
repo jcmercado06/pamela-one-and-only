@@ -69,4 +69,11 @@ export class ComponentsComponent implements OnInit, OnDestroy {
         body.classList.remove('index-page');
     }
 
+    colorize(){
+        var galleryArr = document.querySelectorAll('.image-gallery figure')
+        galleryArr.forEach(el=>{
+            el.classList.toggle('sepia')
+        })
+    }
+
 }
