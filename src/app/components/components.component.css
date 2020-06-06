@@ -154,23 +154,23 @@ span.right {
 }
 
 
-/* .img-container {
+.img-container {
   width: 100%;
   max-width: 120rem;
   margin: auto;
-  padding: 0 1.5rem;
-} */
+  padding: 0 50px;
+}
 
 .image-gallery {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
-  grid-gap: 0;
+  grid-gap: 5vh;
   grid-template-areas: 
-  'img-1 img-2 img-3 img-4'
-  'img-1 img-2 img-3 img-4'
-  'img-5 img-6 img-7 img-8'
-  'img-5 img-6 img-7 img-8';
+  'img-1 img-2 img-3'
+  'img-4 img-5 img-6'
+  'img-7 img-8 img-9'
+
   /* grid-template-areas:
     'img-1 img-2 img-3 img-3'
     'img-1 img-4 img-5 img-6'
@@ -188,8 +188,14 @@ span.right {
   display: flex;
   align-items: center;
   justify-content: center;
+  
+}
+
+.image-gallery figure span {
+  /* display:none */
   color:white;
-  font-family: 'Dosis',sans-serif;
+  font-family: 'Dosis',
+  sans-serif;
   font-size: 5em;
 }
 
@@ -277,53 +283,60 @@ span.right {
   background-image: url("images/img-7.jpg");
 }
 
+
 .img-8 {
+  cursor: pointer;
   grid-area: img-8;
   background-image: url("images/img-8.jpg");
 }
 
+.img-9 {
+  grid-area: img-9;
+  background-image: url("images/img-9.jpg");
+}
 
 
 @media screen and (max-width:900px) {
   .image-gallery {
-    grid-template-areas:
-      'img-1 img-1 img-2 img-2'
-      'img-1 img-1 img-3 img-3'
-      'img-4 img-4 img-5 img-5'
-
-      'img-6 img-6 img-8 img-8'
-      'img-7 img-7 img-8 img-8';
+    grid-gap: 2vh;
   }
-
   .image-gallery figure {
-    height: 20rem;
+    height: 10rem;
 
   }
-
-  .img-1,
-  .img-8 {
-    min-height: 40rem;
+  .image-gallery figure span {
+    font-size: 2em;
   }
+  
+
 }
 
 @media screen and (max-width:600px) {
+  .image-gallery figure span {
+    font-size: 3em;
+  }
   .image-gallery {
     grid-template-areas:
       'img-1 img-1 img-1 img-1'
-      'img-2 img-2 img-2 img-2'
       'img-3 img-3 img-3 img-3'
       'img-4 img-4 img-4 img-4'
-      'img-5 img-5 img-5 img-5'
       'img-6 img-6 img-6 img-6'
       'img-7 img-7 img-7 img-7'
+      'img-9 img-9 img-9 img-9'
+      'img-2 img-2 img-2 img-2'
+      'img-5 img-5 img-5 img-5'
       'img-8 img-8 img-8 img-8'
   }
+  .image-gallery {
+    grid-gap: 1vh;
+  }
 
-  .image-gallery figure,
-  .img-1,
-  .img-6 {
-    height: 30rem;
-    min-height: 30rem;
+  .image-gallery figure {
+    height:25rem;
+
+  }
+  .img-container {
+    padding: 0;
   }
 
 
