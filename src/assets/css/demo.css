@@ -398,8 +398,12 @@
     pointer-events: none;
 }
 
+.section-gallery{
+    background-color: #EEEEEE;
+}
+
 .section-tabs {
-    background: #EEEEEE;
+    background: #ffffff;
 }
 
 .section-pagination {

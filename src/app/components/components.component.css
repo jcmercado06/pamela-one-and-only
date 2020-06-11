@@ -6,6 +6,19 @@ ngb-progressbar {
   margin-top: 5rem;
 }
 
+.section-tabs{
+  min-height: 60vh;
+  background-image: url('assets/img/bg2.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+
+.section-greeting-card{
+  background-color: #ede9e6;
+}
+
 
 .head{
   position:relative
@@ -39,6 +52,12 @@ span.right {
 #profile_pic{
   height: 475px;
 }
+blockquote{
+  background-color: white;
+ 
+  border:none;
+}
+
 
 
 
@@ -230,8 +249,8 @@ span.right {
   transition: .3s ease-in-out;
 }
 .sepia {
-  -webkit-filter: sepia(100%);
-  filter: sepia(100%);
+  -webkit-filter: grayscale(100%) brightness(70%);
+  filter: grayscale(100%) brightness(70%);
   
   -webkit-transition: .6s ease-in-out;
   transition: .6s ease-in-out;
@@ -240,11 +259,15 @@ span.right {
 .noFilter{
   -webkit-filter: sepia(0);
   filter: sepia(0);
+  -webkit-filter: grayscale(0);
+  filter: grayscale(0);
 }
 
 .image-gallery figure:hover {
   -webkit-filter: sepia(0);
   filter: sepia(0);
+  -webkit-filter: grayscale(0) brightness(100%);
+  filter: grayscale(0) brightness(100%);
 }
 
 
