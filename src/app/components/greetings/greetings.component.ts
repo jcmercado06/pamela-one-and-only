@@ -22,11 +22,13 @@ declare var Swiper: any;
 })
 export class GreetingsComponent implements OnInit, OnDestroy{
   animationState:string;
+  swiper;
   sheet_id = '1OX1rW7PlL1XQxdlgjXQf3FACXPev1WELxeySzXqv-J4'
   sheet = 'Form Responses 1'
   greetings;
   pop=true
   startY;
+  autoplay=true
 
   constructor(
     private element: ElementRef,
@@ -39,7 +41,7 @@ export class GreetingsComponent implements OnInit, OnDestroy{
 
     navbar.classList.remove('navbar-transparent');
     console.log('Hola Mundo')
-    /* this.greetingService.getAnswers().subscribe(data => this.greetings = data) */
+
     /* this.greetings = await this.greetingService.getAnswers().pipe(take(1)).toPromise(); */
     this.greetings = [
       {
@@ -47,7 +49,7 @@ export class GreetingsComponent implements OnInit, OnDestroy{
         Name: "JC",
         Timestamp: "5/14/2020 17:15:30",
         background: "",
-        photo: "https://drive.google.com/open?id=13fBQtcUB1V1sIG1dxKd5ue9z--vif9cz",
+        photo: "https://drive.google.com/open?id=16O5o3QKdyam0O_mmLE4ainEV86D1ZbDh",
         photo_id: "13fBQtcUB1V1sIG1dxKd5ue9z--vif9cz",
         photo_url: "https://drive.google.com/open?id",
       },
@@ -63,7 +65,7 @@ export class GreetingsComponent implements OnInit, OnDestroy{
     ]
     console.log("data",this.greetings);
     document.getElementsByTagName('app-navbar')[0].children[0].classList.add('navbar-transparent')
-    
+
     
     
   }
@@ -81,7 +83,11 @@ export class GreetingsComponent implements OnInit, OnDestroy{
     setTimeout(() => {
       let scroll_drag = document.querySelector(".swiper-scrollbar-drag");
       scroll_drag.classList.add("run-animation")
-       var swiper = new Swiper($('.swiper-container'), {
+      console.log(scroll_drag["offsetWidth"]);
+      let totalWidth = scroll_drag["style"].width.slice(0, scroll_drag["style"].width.length - 2);
+      /* console.log(scroll_drag["style"].width); */
+      
+       this.swiper = new Swiper($('.swiper-container'), {
         scrollbar: {
           el: '.swiper-scrollbar',
           hide: false,
@@ -104,37 +110,32 @@ export class GreetingsComponent implements OnInit, OnDestroy{
 
       })
 
-      swiper.on('slideChange', function () {
+      this.swiper.on('slideChange', function () {
+      
         scroll_drag["style"].width = "1px";
         scroll_drag.classList.remove("run-animation")
         void scroll_drag["offsetWidth"];
         scroll_drag.classList.add("run-animation")
-      });
-      swiper.on('touchStart', function(e){
-        //console.log(e);
-        /* this.startY = e.targetTouches[0].pageY */
-        
-      })
-      swiper.on('touchEnd', function (e) {
-        /* console.log(this.startY);
-        console.log(e); */
-        
-      })
-      swiper.on('reachEnd', function(e){
-        console.log("end");
-        
-      })
 
-    }, 3000);
+        console.log(scroll_drag["style"].webkitAnimationName);
+        
+      });
+      
+
+    }, 2000);
   
     
   }
+
+
   swipeDown(e){
     console.log("SWIPEDOWN");
     
   }
 
   getPhotoID(photo){
+
+    
     let id = photo.slice(33, photo.length)
     let styles
     let url = 'http://drive.google.com/uc?export=view&id='+id
@@ -168,6 +169,19 @@ export class GreetingsComponent implements OnInit, OnDestroy{
     navbar.setAttribute('hidden','true')
     this.pop = false
 
+  }
+
+  pauseStories(e) {
+    this.swiper.autoplay.stop();
+    this.autoplay = !this.autoplay;
+    let scroll_drag = document.querySelector(".swiper-scrollbar-drag");
+    scroll_drag["style"].webkitAnimationPlayState = "paused";
+  }
+  playStories(e) {
+    this.swiper.autoplay.start();
+    this.autoplay = !this.autoplay;
+    let scroll_drag = document.querySelector(".swiper-scrollbar-drag");
+    scroll_drag["style"].webkitAnimationPlayState = "running";
   }
 
   hideGreetingDialog(e){

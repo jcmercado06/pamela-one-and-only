@@ -25,7 +25,29 @@
     </div>
   </div>
 </div>
-  <img [hidden]="pop" src="https://img.icons8.com/ios/48/000000/multiply.png"
+
+<img *ngIf="!autoplay" 
+  [hidden]="pop" 
+  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABmJLR0QA/wD/AP+gvaeTAAACBUlEQVRYhe2YsWsTURzHv++uIEmd1MHVDF1uK/dywamr4L9gRzebLkWwUC2IODiIg+DiUJyyKjq2gwh375cOSsAmEpcuDh0CSiBp7ufSg5iql7v73V2HfLaD3/u+D4/H+8IBCxZccIhol4iqZe1vzTGzA6BrjFlnZpW30CyxGxIRT30eANhwXfdLbkYzzHOC06wBODTGvCKiazn4nCOpIAAsKaXuAjgiomar1bKlpaZJIxhxBcDzWq0WBEFwU0poliyCEauWZX1st9t7QRBcF8j7AwlBAFDMfMeyrG/GmEe9Xu+SUK6YYMSyUurhYDD4bIy5JREoLRixopR6T0Rvfd+/kSUoL8GI27Ztd4joaafTuZwmIG9BAKgAuD8cDr8aY9aTLk7aJBIcIEEbFXGCs6zhrI18378aN1yGIHDWRrZtd+PaqCzBiNg2KlswlrIFTwBs9vv9er1e//S3gaWChSJOmfl1GIYPPM87+d9gGYL7AJpa67memSIFj5l5W2u9l2RREYJDAC8qlcpjx3F+Jl2ct+C7yWSy4Xne97QBeQl2mXlTa/0ha5C04C9mflatVp84jjOSCJQSZKXUm/F4vNVoNH4IZQKQETwMw/Devx7arGRpktgWkCDNCZ4CeAlgx3XdgbDPOZIK7gNoFvnrY17BVC0gQewdZObd0Wi0UobcggUXgd8dt7g9AIWIgQAAAABJRU5ErkJggg=="
+  style="position: absolute;
+          cursor: pointer;
+          top: 4px;
+          right: 45px;
+          z-index: 99999;" 
+  (click)="playStories($event)" />
+  
+<img *ngIf="autoplay" 
+  [hidden]="pop" 
+  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABmJLR0QA/wD/AP+gvaeTAAAAlklEQVRYhe3YIQ4CMRRF0VvCZtBfMysByaqQzEoGSzXL+RjUhHaaPEEg78i2v726YGa/rYwcqrUeM/PcvKSUJSLm1cwpM6fOzC0i7ltv70cCgQNwaW1mJsC8Wpt6M8AD2AzcjfV9jwNVDlQ5UOVAlQNVDlQ5UOVAlQNVDlQ5UOVA1ejPwhO4tjZLKcuntfePQ+9OM/t7L56vIGphVtOnAAAAAElFTkSuQmCC"
+  style="position: absolute;
+      cursor: pointer;
+      top: 4px;
+      right: 45px;
+      z-index: 99999;" 
+      (click)="pauseStories($event)" />
+
+<img [hidden]="pop"
+  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAACuUlEQVRoge2YSWsUURDHf9VBEaKCil/ALzDR1x2CiYJIDipuEBP3m19MxQUPhrgkGm+Ch37vjcwHED0acAE3TDrp8pAM9sSZOL0YAvbvWN1V719d9baGmpqampqamprNp9VqDW6FWEERJ2vtaJIk75xzp4oO3CaO46EkSd5Yay8W8Ze8DtbaURGZBXYBiyIyYYx5XGTwOI6HgiB4AewDEmAyDMPpPDFyJdBqtQaTJHkL7M+Yf4rIOWPMszyxnHOHgHlgb8b8Y3l5+cDIyMhCv3FytVCj0fgeBMEE8C1j3qGqM9770/3GsdYeBJ7TKX4FuJFHPBRoIQDv/RFVfQrszJiXVPVCFEUzG/n2+PIrwPUwDO/k1VJoEhtjXorISTorsV1EHlhrz/Ty6yVeVa8VEQ8FE4DVJIATwNeMuZ3E2fXve+8NPcRHUXS3qI5CLZTFOTcGPGV1VWqzBEy1VxTvvVHVeWBP5p0VVb0aRdG9MuOXTgD+WFrbLAFTQRAspGk6B+zOPEtEZMoY87Ds2JUkABtWYnGdrTLxUGECAHEcHw6CYJbOr52lUvFQYhJ3Y3h4+FWapieAL10eJ8BkleKh4gT+hohUWnH4Ny00R2fPZ9m6LeScG+sifonOfWKbqt733p+vatxKErDWjtJjLxCRY8DnjH2bqj4oenxeT+kEnHNj3fYAVZ0Mw3DaGONFZBz4lHk+ICK3rbWXyo5fag6srf2z9HGo2+gcVOYoUbgC3vsj9CkeIAzDJtCtErecc5eL6ihUgWazeTRN0yesE792O3u0ka+19qCIzLN6C2uzecfpMuIBoih6rarjwMeMeQC46b2/klfP/3elVNXz/F7bF4GJvOJhdU6kaXoc+LBmSoArea+UhbDWjjrnFqy142VjNZvNhnPufVX7Qt9slR9bNTU1NTU1NTUl+AVL3VE3P0AyPwAAAABJRU5ErkJggg=="
   style="position: absolute;
     cursor: pointer;
     top: 0px;
@@ -50,9 +72,9 @@
     </ng-container>
     <div class='swiper-slide sunset'>
       <div class="swiper-slide"
-      [ngStyle]="getPhotoID('https://drive.google.com/open?id=1Nt9vn0tPdSl30oo_zCJRx_vRNRCIKBS2')"
+      [ngStyle]="getPhotoID('https://drive.google.com/open?id=16O5o3QKdyam0O_mmLE4ainEV86D1ZbDh')"
         data-swiper-parallax="-23%">
-        <div class="title" data-swiper-parallax="-300">Slide 1 <span class='time'>5/14/2020 17:15:30</span>
+        <div class="title" data-swiper-parallax="-300">Last<span class='time'>5/14/2020 17:15:30</span>
         </div>
         <div class="text" data-swiper-parallax="-100">
           <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum mattis velit, sit
