@@ -6,6 +6,27 @@ ngb-progressbar {
   margin-top: 5rem;
 }
 
+/* originally authored by Nick Pettit - https://github.com/nickpettit/glide */
+.pulse {
+  /* animation-name: pulse;
+  animation-timing-function: ease-in-out; */
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
 .section-tabs{
   min-height: 60vh;
   background-image: url('assets/img/bg2.jpg');
@@ -364,3 +385,13 @@ blockquote{
 
 
 }
+
+
+
+
+
+
+
+
+
+

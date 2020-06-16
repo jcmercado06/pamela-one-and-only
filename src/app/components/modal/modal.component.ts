@@ -3,7 +3,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'ngbd-modal-component',
-  templateUrl: './modal.component.html'
+  templateUrl: './modal.component.html',
+    styleUrls: ['./modal.component.scss'],
 })
 export class NgbdModalBasic {
     closeResult: string;

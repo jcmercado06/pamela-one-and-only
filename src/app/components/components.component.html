@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" >
   <div class="page-header clear-filter" filter-color="orange">
     <div class="page-header-image rellax-header" data-rellax-speed="-7" style="background-image: url('assets/img/header.jpg');">
 
@@ -10,7 +10,9 @@
             <div class="space-50"></div>
             <br><br><br><br>
                 <h1>
-                    <span class='left'>PAM</span>
+                    <span class='left' [@PamAnimator]="animationState"
+                    (@PamAnimator.done)="resetAnimationState()"
+                    (click)="startAnimation('slideLeft')">PAM</span>
                 <img id='profile_pic' src="" class='col-sm-7' alt="">
                 <!-- <img src="assets/img/logo-square.jpg" class='col-sm-5' alt=""> -->
                     <span class='right'>ELA</span>
@@ -189,8 +191,8 @@
                     <figure class="img-5 sepia"><span>LIVE YOURS</span></figure>
                     <figure class="img-6 sepia"><span></span></figure>
                     <figure class="img-7 sepia"><span></span></figure>
-                    <figure class="img-8 sepia" (click)="colorize()">s
-                        <span> IN COLOR </span>
+                    <figure class="img-8 sepia"  (click)="colorize()">
+                        <span class="pulse"> IN COLOR </span>
                     </figure>
                     <figure class="img-9 sepia"><span></span></figure>
                </div>
@@ -264,7 +266,7 @@
       </div> -->
       <!-- <app-typography></app-typography> -->
      
-      <div class="section section-tabs">
+      <div class="section section-tabs" >
           <div class="container">
               <div class="row">
                   <div class="col-md-7 ml-auto mr-auto">
@@ -370,7 +372,7 @@
           </div>
       </div>
   </div>
-  <footer class="footer" data-background-color="black">
+  <footer class="footer" data-background-color="black" >
       
       <div class="container">
           <div class="text-center">

@@ -1,15 +1,27 @@
-import { Component, OnInit, Renderer2, OnDestroy } from '@angular/core';
+import { Component, OnInit, Renderer2, OnDestroy, HostListener, AfterViewInit } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
 import * as Rellax from 'rellax';
 
+import { trigger, keyframes, animate, transition, state, style } from '@angular/animations'
+import * as kf from './greetings/keyframes';
 @Component({
     selector: 'app-components',
     templateUrl: './components.component.html',
-    styleUrls: ['./components.component.css'] 
+    styleUrls: ['./components.component.css'],
+    animations:[
+        trigger('PamAnimator', [
+            transition('* => slideLeft', animate(3000, keyframes(kf.slideLeft)))
+        ]),
+        /* trigger('colorAnimator', [
+            transition(':enter', animate(1000, keyframes(kf.pulse)))
+        ]) */
+    ]
 })
 
-export class ComponentsComponent implements OnInit, OnDestroy {
+export class ComponentsComponent implements OnInit, OnDestroy, AfterViewInit {
+    animationState: string
+    state: string;
     data : Date = new Date();
 
     page = 4;
@@ -69,11 +81,40 @@ export class ComponentsComponent implements OnInit, OnDestroy {
         body.classList.remove('index-page');
     }
 
+    ngAfterViewInit() {
+        this.state = 'pulse';
+    }
+
     colorize(){
         var galleryArr = document.querySelectorAll('.image-gallery figure')
         galleryArr.forEach(el=>{
             el.classList.toggle('sepia')
         })
+        document.querySelector('.img-8 span').classList.toggle('pulse')
+
+    }
+
+    startAnimation(state) {
+        console.log(state);
+        if (!this.animationState) {
+            this.animationState = state
+
+        }
+    }
+    resetAnimationState() {
+        this.animationState = ''
+    }
+
+    @HostListener('scroll', ['$event'])
+    onScroll(event: any) {
+        // visible height + pixel scrolled >= total height 
+        console.log(event.target.scrollHeight);
+        
+        if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight) {
+            console.log("End");
+        }
     }
 
 }
+
+
