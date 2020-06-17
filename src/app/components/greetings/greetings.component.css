@@ -21,7 +21,7 @@ body {
   box-sizing: border-box;
   padding: 40px 45px;
   min-height: 100vh;
-  background-size: 80%! important;
+  background-size: 50%! important;
 }
 
 .parallax-bg {
@@ -60,7 +60,8 @@ body {
   position: relative;
   top: 9%;
   text-align: center;
-  margin:5vh auto;
+  /* margin:5vh auto; */
+  margin: 10vh -15px
 }
 
 .swiper-slide .text span {
@@ -286,6 +287,10 @@ body {
  .swiper-slide {
    background-size: 100% ! important;
  }
+ .swiper-slide .text {
+   font-size: 2vh;
+   margin:6vh auto;
+ }
 
 }
 
@@ -293,18 +298,22 @@ body {
   .story img {
     transform: translate(-50%, -51.5%);
   }
-.story svg {
-  width: 240px;
-  height: 240px;
-}
-.story svg circle {
-  cx: 120;
-  cy: 120;
-  r: 110;
-}
-.swiper-slide {
-  background-size: 100% ! important;
-}
+  .story svg {
+    width: 240px;
+    height: 240px;
+  }
+  .story svg circle {
+    cx: 120;
+    cy: 120;
+    r: 110;
+  }
+  .swiper-slide {
+    background-size: 100% ! important;
+  }
+  .swiper-slide .text {
+    font-size: 2vh;
+    margin: 6vh auto;
+  }
 
 }
 
@@ -327,6 +336,10 @@ body {
   .swiper-slide {
     background-size: 100% ! important;
   }
+   .swiper-slide .text {
+     font-size: 2vh;
+     margin: 6vh auto;
+   }
 
 
 }

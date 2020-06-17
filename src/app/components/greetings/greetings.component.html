@@ -55,10 +55,10 @@
     z-index: 99999;"
   (click)="hideGreetingDialog($event)"/>
 
-<div class="swiper-container" [hidden]="pop" (swipedown)="swipeDown($event)">
+<div class="swiper-container" [hidden]="pop">
   <div class="parallax-bg"></div>
-  <div class="swiper-wrapper" (swipedown)="hideGreetingDialog($event)">
-    <button style="position:absolute;float:right">X</button>
+  <div class="swiper-wrapper" >
+    <!-- <button style="position:absolute;float:right">X</button> -->
     <ng-container *ngFor="let item of greetings">
       <div class='swiper-slide {{(item.background) ? item.background.toLowerCase() : "default" }}'>
         <div class="swiper-slide" [ngStyle]="getPhotoID(item.photo)" data-swiper-parallax="-23%">
@@ -70,7 +70,7 @@
         </div>
       </div>
     </ng-container>
-    <div class='swiper-slide sunset'>
+    <!-- <div class='swiper-slide sunset'>
       <div class="swiper-slide"
       [ngStyle]="getPhotoID('https://drive.google.com/open?id=16O5o3QKdyam0O_mmLE4ainEV86D1ZbDh')"
         data-swiper-parallax="-23%">
@@ -94,7 +94,7 @@
             rutrum.</span>
         </div>
       </div>
-    </div>
+    </div> -->
 
 
   </div>

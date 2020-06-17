@@ -115,6 +115,19 @@ export class ComponentsComponent implements OnInit, OnDestroy, AfterViewInit {
         }
     }
 
+    @HostListener('document:scroll')
+    scrollFunction(){
+        /* let greetings = document.querySelector('.section-greeting-card').scrollHeight */
+        let TotalWindow = document.documentElement.offsetHeight
+        let currentPos = Math.round((window.pageYOffset / TotalWindow) * 100)
+        console.log(currentPos)
+        
+        
+        /* if (currentPos == 90) {
+            document.querySelector('.hero-images-container').classList.add('fadeIn')
+        } */
+    }
+
 }
 
 

@@ -135,6 +135,7 @@ export class GreetingsComponent implements OnInit, OnDestroy{
 
   getPhotoID(photo){
 
+   /*  console.log(photo); */
     
     let id = photo.slice(33, photo.length)
     let styles
