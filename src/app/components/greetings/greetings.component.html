@@ -58,6 +58,7 @@
 <div class="swiper-container" [hidden]="pop">
   <div class="parallax-bg"></div>
   <div class="swiper-wrapper" >
+    
     <!-- <button style="position:absolute;float:right">X</button> -->
     <ng-container *ngFor="let item of greetings">
       <div class='swiper-slide {{(item.background) ? item.background.toLowerCase() : "default" }}'>
@@ -70,31 +71,81 @@
         </div>
       </div>
     </ng-container>
-    <!-- <div class='swiper-slide sunset'>
+    <div class='swiper-slide ash' data-swiper-autoplay="27000">
+
+      <div class="swiper-slide" data-swiper-parallax="-23%">
+        <div class="title" data-swiper-parallax="-300">Glen<span class='time'>June 18, 2020, 9:14PM</span>
+        </div>
+        <video muted loop id="glenVideo" data-swiper-parallax="-100">
+          <source src="../../../assets/img/glen_greeting.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+    </div> 
+    <div class='swiper-slide azure'>
       <div class="swiper-slide"
-      [ngStyle]="getPhotoID('https://drive.google.com/open?id=16O5o3QKdyam0O_mmLE4ainEV86D1ZbDh')"
+        [ngStyle]="getPhotoID('https://drive.google.com/open?id=1Hi2OY7rsGKcHBSMVyJEiD-hgbmvqoIY3')"
         data-swiper-parallax="-23%">
-        <div class="title" data-swiper-parallax="-300">Last<span class='time'>5/14/2020 17:15:30</span>
+        <div class="title" data-swiper-parallax="-300">Glenda Garcia<span class='time'>June 18, 2020, 8:18PM</span>
         </div>
         <div class="text" data-swiper-parallax="-100">
-          <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum mattis velit, sit
-            amet faucibus
-            felis iaculis nec. Nulla laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
-            Integer laoreet
-            magna nec elit suscipit, ac laoreet nibh euismod. Aliquam hendrerit lorem at elit facilisis
-            rutrum. Ut at
-            ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec, tincidunt ut libero. Aenean
-            feugiat non eros
-            quis feugiat.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum mattis velit, sit amet
-            faucibus
-            felis iaculis nec. Nulla laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
-            Integer laoreet
-            magna nec elit suscipit, ac laoreet nibh euismod. Aliquam hendrerit lorem at elit facilisis
-            rutrum.</span>
+          <span>"Happy birthday sa masungit pero mabait at maalalahanin kong kapatid.
+            <br><br>
+            Andie's nangnang (ninang). Kinuha kitang ninang dahil nakita ko kung gano mo alagaan at kung papano ka mag
+            alala kay Andie. Im so grateful for the TLC you are able to give for Andie.
+            <br><br>
+            Sana matupad lahat ng pinapangarap mo sa buhay. Alam ko naman simple lang naman ang gusto mo dahil pareho
+            tayong simple lang ang outlook sa buhay.
+            <br><br>
+            Ingatan mo lang un health mo dahil sakitin ka and always be happy.
+            <br><br>
+            Happy birthday! 😘
+            <br><br>
+            Love,
+            <br><br>
+            Ate Glen and Andie 👱🏼‍♀️🧒🏻"</span>
         </div>
       </div>
-    </div> -->
+    </div>
+    <div class='swiper-slide midnight'>
+      <div class="swiper-slide"
+        [ngStyle]="getPhotoID('')"
+        data-swiper-parallax="-23%">
+        <div class="title" data-swiper-parallax="-300">Tow<span class='time'>June 18, 2020, 8:52PM</span>
+        </div>
+        <div class="text" data-swiper-parallax="-100">
+          <span>Happy Birthday Kambal. <br> Dahil pinipilit mong kamukha mo ko sige pagbibigyan kita dahil birthday mo Sana
+            maging successful ka at higit sa lahat maging masaya ka sa mga disisyon mo sa buhay! <br> I wish you all the
+            best
+            and enjoy your day! Happy birthday ulit 😊</span>
+        </div>
+      </div>
+    </div>
+    <div class='swiper-slide piglet'>
+      <div class="swiper-slide"
+        [ngStyle]="getPhotoID('https://drive.google.com/open?id=1rLPDgZkqFAW5yYPBTw-4BSoYJqeZSRCZ')"
+        data-swiper-parallax="-23%">
+        <div class="title" data-swiper-parallax="-300">Raf and rox<span class='time'>June 18, 2020, 11:40PM</span>
+        </div>
+        <div class="text" data-swiper-parallax="-100">
+          <span>Happy Happy Birthday ela! sana mag enjoy ka ngyon quarantine birthday mo! 😊 wish u all d best and
+            maging successful ka pa 😊 Thankyou sa love and care sa tatlong piggies namin❤️ mgyyngat ka palagi lalo na
+            pagpasok sa work! lab n lab kn nun tatlo lalo c blair at gwen 😍🥰❤️ we labyou nangnang ela! </span>
+        </div>
+      </div>
+    </div>
+    <div class='swiper-slide piglet' data-swiper-autoplay="29100">
+    
+      <div class="swiper-slide" data-swiper-parallax="-23%">
+        <div class="title" data-swiper-parallax="-300">Daddy<span class='time'>June 18, 2020, 9:14PM</span>
+        </div>
+        <video muted loop id="myVideo" data-swiper-parallax="-100">
+          <source src="../../../assets/img/tito_greeting.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video> 
+      </div> 
+    </div>
+     
 
 
   </div>

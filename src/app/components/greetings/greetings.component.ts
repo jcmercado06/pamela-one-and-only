@@ -6,7 +6,7 @@ import { take } from 'rxjs/operators';
 
 import { trigger, keyframes, animate, transition } from '@angular/animations'
 import * as kf from './keyframes';
-import * as Hammer from 'hammerjs';
+
 
 declare var $: any;
 declare var Swiper: any;
@@ -42,8 +42,8 @@ export class GreetingsComponent implements OnInit, OnDestroy{
     navbar.classList.remove('navbar-transparent');
     console.log('Hola Mundo')
 
-    /* this.greetings = await this.greetingService.getAnswers().pipe(take(1)).toPromise(); */
-    this.greetings = [
+    this.greetings = await this.greetingService.getAnswers().pipe(take(1)).toPromise();
+    /* this.greetings = [
       {
         Message: "Test Messagese234",
         Name: "JC",
@@ -62,7 +62,7 @@ export class GreetingsComponent implements OnInit, OnDestroy{
         photo_id: "13fBQtcUB1V1sIG1dxKd5ue9z--vif9cz",
         photo_url: "https://drive.google.com/open?id",
       }
-    ]
+    ] */
     console.log("data",this.greetings);
     document.getElementsByTagName('app-navbar')[0].children[0].classList.add('navbar-transparent')
 
@@ -101,7 +101,7 @@ export class GreetingsComponent implements OnInit, OnDestroy{
           prevEl: '.swiper-button-prev',
         },
         autoplay: {
-          delay: 4400,
+          delay: 10000,
           disableOnInteraction: false
         },
         cubeEffect: {
@@ -111,15 +111,45 @@ export class GreetingsComponent implements OnInit, OnDestroy{
       })
 
       this.swiper.on('slideChange', function () {
-      
+        let video = document.getElementById('myVideo')
         scroll_drag["style"].width = "1px";
         scroll_drag.classList.remove("run-animation")
         void scroll_drag["offsetWidth"];
         scroll_drag.classList.add("run-animation")
 
         console.log(scroll_drag["style"].webkitAnimationName);
+        /* console.log($('.swiper-slide-active').attr('src')); */
+        /* console.log('contains video', document.querySelector('.swiper-slide-active'));
+        console.log('contains video', document.querySelector('.swiper-slide-active').contains(video)); */
+        
         
       });
+      this.swiper.on('transitionEnd', function (){
+        /* let video = document.getElementById('myVideo') */
+        let titoVideo = document.querySelector('.swiper-slide-active #myVideo')
+        let glenVideo = document.querySelector('.swiper-slide-active #glenVideo')
+        console.log('contains video', document.querySelector('.swiper-slide-active #myVideo'));
+        if (titoVideo) {
+          /* let vid = document.getElementById("myVideo") */
+          let vid = $("#myVideo")
+          console.log(vid); 
+          vid[0].load()
+          vid[0].play()
+        } else {
+          let vid = $("#myVideo")
+          vid[0].pause();
+        }
+        if (glenVideo) {
+          /* let vid = document.getElementById("myVideo") */
+          let vid = $("#glenVideo")
+          console.log(vid);
+          vid[0].load()
+          vid[0].play() 
+        } else {
+          let vid = $("#glenVideo")
+          vid[0].pause();
+        }
+      }) 
       
 
     }, 2000);
@@ -191,6 +221,10 @@ export class GreetingsComponent implements OnInit, OnDestroy{
     console.log(navbar);
     
     this.pop = true
+    let vid = $("#glenVideo")
+    let vid1 = $("#myVideo")
+    vid[0].pause();
+    vid1[0].pause();
   }
 
   myFunction(e){
